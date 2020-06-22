@@ -35,6 +35,8 @@ int main()
     {
         pair<int, int> p = q.front();
         q.pop();
+        
+        s[p.first][p.second] = '#';
 
         for (int k = 0; k < 4; ++k)
         {
@@ -42,7 +44,6 @@ int main()
             if (!e(ni, nj))
                 continue;
             q.push({ni, nj});
-            s[ni][nj] = '#';
             d[ni][nj] = k;
             l[ni][nj] = dc[k];
         }
@@ -52,7 +53,7 @@ int main()
     {
         cout << "YES\n";
         string t;
-        while (ti ^ si || tj ^ sj)
+        while (ti^si||tj^sj)  // which simply means ti!=si || tj!=sj
         {
             t += l[ti][tj];
             int dd = d[ti][tj] ^ 2;
