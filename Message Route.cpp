@@ -16,7 +16,7 @@ int main(){
 		 adj[a].push_back(b);
 		 adj[b].push_back(a);	
 	} 
-	memset(l,-1,4*n);
+	memset(l,-1,sizeof(l));
 	queue<int> q;
 	q.push(0);
 	l[0]=-2;
