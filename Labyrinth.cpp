@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//BFS + Backtracking inside a grid!!!!!
 const int mxN = 1e3, di[4] = {1, 0, -1, 0}, dj[4] = {0, 1, 0, -1};
 const char dc[4] = {'D', 'R', 'U', 'L'};
 int n, m, si, sj, ti, tj, d[mxN][mxN];
@@ -35,7 +36,7 @@ int main()
     {
         pair<int, int> p = q.front();
         q.pop();
-        
+
         s[p.first][p.second] = '#';
 
         for (int k = 0; k < 4; ++k)
@@ -53,7 +54,7 @@ int main()
     {
         cout << "YES\n";
         string t;
-        while (ti^si||tj^sj)  // which simply means ti!=si || tj!=sj
+        while (ti ^ si || tj ^ sj) // which simply means ti!=si || tj!=sj
         {
             t += l[ti][tj];
             int dd = d[ti][tj] ^ 2;

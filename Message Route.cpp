@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+ #include<bits/stdc++.h>
 using namespace std;
 
 const int mxN = 1e5;
@@ -19,7 +19,7 @@ int main(){
 	memset(l,-1,sizeof(l));
 	queue<int> q;
 	q.push(0);
-	l[0]=-2;
+
 	while(!q.empty()){
 		int p = q.front();
 		q.pop();
