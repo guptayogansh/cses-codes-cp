@@ -3,8 +3,7 @@
 using namespace std;
 
 const int mxN = 1e5, M=1e9+7;
-int n,m;
-int p[mxN],dp[mxN];
+int n,m, p[mxN],dp[mxN];
 vector<int> adj[mxN],ans;
 bool vis[mxN],act[mxN];
 ll d[mxN];
@@ -44,7 +43,7 @@ void dfs2(int u){
 	else{
 		if(!vis[nd]){
 			p[nd]=u;
-			dfs(nd);
+			dfs2(nd);
 		}
 	}
 	if(dp[nd]+1<dp[u])
@@ -91,15 +90,18 @@ int main(){
   
   d[0]=0;
   q.push({0,0});
-  while(q.size()){
-  	int p = q.top().second;
+  while(!q.empty()){
+  	pair<ll,ll> p = q.top();
   	q.pop();
   	
-  	for(auto nd:adj2[p]){
+  	if(p.first>d[p.second])
+  	 continue;
+  	
+  	for(auto nd:adj2[p.second]){
   		ll w=nd.first, v=nd.second;
-  		if(d[p]+w<d[v])
+  		if(d[p.second]+w<d[v])
   		{
-  			d[v]=d[p]+w;
+  			d[v]=d[p.second]+w;
   			q.push({d[v],v});
 		  }
 	  }
@@ -108,7 +110,7 @@ int main(){
    for(int i=0;i<n;i++)
     for(auto nd:adj2[i]){
     	ll w=nd.first, v=nd.second;
-    	if(d[i]+w==v)
+    	if(d[i]+w==d[v])
     	 adj[i].push_back(v);
 	}
 	  
