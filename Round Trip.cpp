@@ -18,7 +18,7 @@ void dfs(int n, int pn = -1)
 			continue;
 		if (v[nd])
 		{
-			vector<int> ans ={n};
+			vector<int> ans = {n};
 			while (n ^ nd)
 			{
 				n = p[n];

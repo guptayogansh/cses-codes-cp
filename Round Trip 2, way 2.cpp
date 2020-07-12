@@ -5,23 +5,22 @@ const int mxN = 1e5;
 int n, m;
 vector<int> adj[mxN];
 int p[mxN];
-bool v[mxN] = {0},act[mxN];
+bool v[mxN] = {0}, act[mxN];
 
 void dfs(int n, int pn = -1)
 {
     v[n] = 1;
-    act[n]=1;
+    act[n] = 1;
     p[n] = pn;
     for (auto nd : adj[n])
-    { 
+    {
         if (act[nd])
         {
-            vector<int> ans={n};
+            vector<int> ans = {n};
             while (n ^ nd)
             {
-            	n = p[n];
+                n = p[n];
                 ans.push_back(n);
-               
             }
             ans.push_back(ans[0]);
             reverse(ans.begin(), ans.end());
@@ -33,7 +32,7 @@ void dfs(int n, int pn = -1)
         else
             dfs(nd, n);
     }
-    act[n]=0;
+    act[n] = 0;
 }
 
 int main()
@@ -49,6 +48,6 @@ int main()
     for (int i = 0; i < n; i++)
         if (!v[i])
             dfs(i);
-            
+
     cout << "IMPOSSIBLE";
 }
